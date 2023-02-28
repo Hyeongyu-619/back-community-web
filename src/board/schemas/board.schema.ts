@@ -8,13 +8,16 @@ export class Board {
   id: number;
 
   @Prop()
-  owner: string;
+  author: string;
 
   @Prop()
   title: string;
 
   @Prop()
   description: string;
+
+  @Prop()
+  date_posted: string;
 }
 
 export const BoardSchema = SchemaFactory.createForClass(Board);

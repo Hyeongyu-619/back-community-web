@@ -2,7 +2,7 @@ import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateBoardDto {
   @IsString()
-  owner: string;
+  author: string;
 
   @IsString()
   title: string;
@@ -12,4 +12,7 @@ export class CreateBoardDto {
 
   @IsNumber()
   id: number;
+
+  @IsString()
+  date_posted: string;
 }

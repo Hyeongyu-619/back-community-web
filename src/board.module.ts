@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { BoardController } from './board.controller';
+import { BoardService } from './board.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BoardsModule } from './board/module/board.module';
 
@@ -15,7 +15,7 @@ import { BoardsModule } from './board/module/board.module';
     ),
     BoardsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [BoardController],
+  providers: [BoardService],
 })
-export class AppModule {}
+export class BoardModule {}

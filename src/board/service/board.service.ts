@@ -8,9 +8,23 @@ import { CreateBoardDto } from '../dto/board.dto';
 export class BoardsService {
   constructor(@InjectModel(Board.name) private boardModel: Model<BoardData>) {}
 
-  async create(createBoardDto: CreateBoardDto): Promise<Board> {
+  async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
     const createdBoard = new this.boardModel(createBoardDto);
     return createdBoard.save();
+  }
+
+  async editBoard(id: number, createBoardDto: CreateBoardDto): Promise<Board> {
+    const editedBoard = await this.boardModel.findByIdAndUpdate(
+      id,
+      createBoardDto,
+      { new: true },
+    );
+    return editedBoard;
+  }
+
+  async deleteBoard(id: number): Promise<any> {
+    const deletedBoard = await this.boardModel.findByIdAndRemove(id);
+    return deletedBoard;
   }
 
   async findAll(): Promise<Board[]> {
@@ -30,9 +44,9 @@ export class BoardsService {
     }
   }
 
-  async findByOwner(owner: string): Promise<Board[]> {
+  async findByAuthor(author: string): Promise<Board[]> {
     try {
-      return this.boardModel.findOne({ owner: owner });
+      return this.boardModel.findOne({ author: author });
     } catch (err) {
       console.log('{} Error', err);
     }

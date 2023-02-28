@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { BoardModule } from './board.module';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const board = await NestFactory.create(BoardModule);
 
-  await app.listen(3000);
+  await board.listen(3000);
 }
 bootstrap();
